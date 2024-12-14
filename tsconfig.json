@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "module": "ESNext",
+    "moduleResolution": "node",
+    "outDir": "dist",
+    "rootDir": "src",
+    "strict": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,          // Agregado: Compatibilidad con módulos CommonJS
+    "skipLibCheck": true              // Agregado: Ignorar chequeo de tipos en archivos de librerías
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
+}
