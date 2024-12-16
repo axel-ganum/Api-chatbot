@@ -1,7 +1,7 @@
 import { Router } from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-import { AppDataSource } from "../../index";
+import { AppDataSource } from "../index";
 import User from "../entity/User";
 import dotenv from "dotenv";
 dotenv.config();
@@ -52,11 +52,9 @@ router.post("/login", async (req, res) => {
       return res.status(401).json({ message: "Contraseña incorrecta." });
     }
 
-    const token = jwt.sign(
-      { userId: user.id, email: user.email },
-      jwt_SECRET,
-      { expiresIn: "7d" }
-    );
+    const token = jwt.sign({ userId: user.id, email: user.email }, jwt_SECRET, {
+      expiresIn: "7d",
+    });
 
     res.json({ message: "Inicio de sesión exitoso.", token });
   } catch (error) {

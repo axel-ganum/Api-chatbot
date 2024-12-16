@@ -8,9 +8,9 @@
     "strict": true,
     "experimentalDecorators": true,
     "emitDecoratorMetadata": true,
-    "esModuleInterop": true,          // Agregado: Compatibilidad con módulos CommonJS
-    "skipLibCheck": true              // Agregado: Ignorar chequeo de tipos en archivos de librerías
+    "esModuleInterop": true, // Agregado: Compatibilidad con módulos CommonJS
+    "skipLibCheck": true // Agregado: Ignorar chequeo de tipos en archivos de librerías
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "src/index.ts"],
   "exclude": ["node_modules"]
 }

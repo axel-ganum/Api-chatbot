@@ -6,10 +6,10 @@ class User {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column()
+  @Column({type: "varchar", length:100})
   name!: string;
 
-  @Column()
+  @Column({type:"varchar", length: 150})
   email!: string;
 
   @OneToMany(() => Message, (message) => message.user)
