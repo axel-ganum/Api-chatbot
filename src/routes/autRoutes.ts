@@ -1,6 +1,7 @@
 import { Router } from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
+import {Request, Response} from "express"
 import { AppDataSource } from "../index";
 import User from "../entity/User";
 import dotenv from "dotenv";
@@ -10,7 +11,7 @@ const router = Router();
 
 const jwt_SECRET = process.env.JWT_SECRET || "default_secret";
 
-router.post("/register", async (req, res) => {
+router.post("/register", async (req: Request, res: Response) => {
   const { name, email, password } = req.body;
 
   try {

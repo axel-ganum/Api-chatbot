@@ -3,7 +3,9 @@ import express from "express";
 import { DataSource } from "typeorm";
 import cors from "cors";
 import dotenv from "dotenv";
-import authRoutes from "./routes/autRoutes.js";
+import User from "./entity/User" 
+import authRoutes from "./routes/autRoutes";
+import Message from "./entity/Message";
 dotenv.config();
 
 const app = express();
@@ -22,7 +24,7 @@ const AppDataSource = new DataSource({
   database: process.env.DB_DATABASE,
   synchronize: true,
   logging: true,
-  entities: ["src/entity/**/*.ts"],
+  entities: [User,Message],
 });
 
 AppDataSource.initialize()
