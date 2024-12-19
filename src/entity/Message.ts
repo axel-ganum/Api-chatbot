@@ -9,6 +9,9 @@ class Message {
   @Column({type:"text"})
   content!: string;
 
+  @Column({type: 'boolean', default:false})
+  isBot!: boolean;
+
   @ManyToOne(() => User, (user) => user.messages)
   user!: User; 
 }
