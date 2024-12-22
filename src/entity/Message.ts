@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne} from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, JoinColumn} from "typeorm";
 import User from "./User";
 
 @Entity()
@@ -12,7 +12,8 @@ class Message {
   @Column({type: 'boolean', default:false})
   isBot!: boolean;
 
-  @ManyToOne(() => User, (user) => user.messages)
+  @ManyToOne(() => User, (user) => user.messages, {nullable:false})
+  @JoinColumn({name:"userId"})
   user!: User; 
 }
 export default Message;

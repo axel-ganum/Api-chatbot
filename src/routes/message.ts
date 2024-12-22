@@ -2,6 +2,7 @@ import express,{Request, Response} from 'express';
 import { AppDataSource } from '../index';
 import Message from '../entity/Message';
 import User from '../entity/User';
+import { generateResponse } from '../controller/messages.bot';
 
 
 const router = express.Router();
@@ -10,7 +11,7 @@ router.post('/messages', async (req: Request, res: Response) => {
 const {userId, content} = req.body;
 
 try {
-  const userRepository = AppDataSource.getMongoRepository(User);
+  const userRepository = AppDataSource.getRepository(User);
   const user = await userRepository.findOneBy({id: userId});
   if (!user) {
 
@@ -23,14 +24,14 @@ try {
        isBot: false,
        user
  });
- await messageRepository.save(userMessage);
+ await messageRepository.save(userMessage); 
 
  const botResponse =  await generateResponse(content);
 
  const botMessage = messageRepository.create({
        content: botResponse,
        isBot: true,
-       user:{id:userId}
+       user,
  });
 
  await messageRepository.save(botMessage);
@@ -45,3 +46,5 @@ try {
 }
 
 })
+
+export default router

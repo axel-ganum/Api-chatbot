@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import User from "./entity/User" 
 import authRoutes from "./routes/autRoutes";
 import Message from "./entity/Message";
+import message from "./routes/message"
 dotenv.config();
 
 const app = express();
@@ -14,6 +15,7 @@ const PORT = process.env.PORT || 3000;
 app.use(express.json());
 
 app.use("/auth", authRoutes);
+app.use("/message", message )
 
 const AppDataSource = new DataSource({
   type: "mysql",
